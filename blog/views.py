@@ -2,14 +2,17 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
 from .forms import UserModelForm
-
-
+from .models import BlogMode
 
 # Create your views here.
 
 
 def index(request):
-    return render(request,'index.html',{})
+    blogs = BlogMode.objects.all()
+    context ={
+        'blogs':blogs
+    }
+    return render(request,'index.html',context)
 
 def signup(request):
     if request.method == 'POST':

@@ -15,13 +15,6 @@ class BlogMode  (models.Model):
     def __str__(self) :
         return self.title
     
-class ProfileMode  (models.Model):
-    profile_name = models.CharField(max_length=250)
-    profile_content = models.TextField()
-    profile_img = models.ImageField(upload_to='profile_images/')
-  
-    def __str__(self) :
-        return self.profile_name
 
 class UserModel(models.Model):
     fistname = models.CharField(max_length=100)

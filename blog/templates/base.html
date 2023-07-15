@@ -1,19 +1,20 @@
-{% load static %}
+
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        
+        {% load static %}
         {% block title%}<title>Bloggy </title>{%endblock%}
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="Free Website Template" name="keywords">
-        <meta content="Free Website Template" name="description">
-
+        <meta content="senwin Website" name="keywords">
+        <meta content="senwin" name="description">
         <!-- Favicon -->
-        <link href="img/favicon.icon" rel="icon">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+        
+
+        <link href="{% static 'img/favicon.icon'%}" rel="icon">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:300;400;600;700;800&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css " rel="stylesheet">
 
-        <link href="{% static 'css/style.css' %}" rel="stylesheet">
     </head>
     <body>
         <div class="wrapper">
@@ -39,7 +40,7 @@
                 <!-- Navbar Start -->
                 <div class="container p-0">
                     <nav class="navbar navbar-expand-lg bg-secondary navbar-dark">
-                        <a href="" class="navbar-brand d-block d-lg-none">Navigation</a>
+                        <a href="" class="navbar-brand d-block d-lg-none">WinFolio</a>
                         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -75,26 +76,15 @@
           </div>
     </form>
 </div>
+<!-- main Javascript -->
+<script src="{% static 'js/main.js'%}"></script>
 
-     <!-- Footer Start -->
-     <div class="container py-4 bg-secondary text-center">
-      <p class="m-0 text-white">
-          &copy; <a class="text-white font-weight-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed by <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
-      </p>
-  </div>
-</div>
-</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'lib/easing/easing.min.js'%}"></script>
+<script src="{% static 'lib/waypoints/waypoints.min.js'%}"></script>
 
-<!-- Back to Top -->
-<a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
-<script src="{% static 'https://code.jquery.com/jquery-3.4.1.min.js' %}"></script>
-<script src="{% static 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js' %}"></script>
-<script src="{% static 'lib/easing/easing.min.js' %}"></script>
-<script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
-<script src="{% static 'mail/jqBootstrapValidation.min.js' %}"></script>
-<script src="{% static 'mail/contact.js' %}"></script>
-
-<!-- Template Javascript -->
-<script src="{% static 'js/main.js' %}"></script>
+<!-- Contact Javascript File -->
+<script src="{% static 'mail/jqBootstrapValidation.min.js'%}"></script>
 </body>
 </html>
