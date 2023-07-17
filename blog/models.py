@@ -16,12 +16,13 @@ class BlogMode  (models.Model):
         return self.title
     
 
-class UserModel(models.Model):
-    fistname = models.CharField(max_length=100)
+'''class RegistrationForm(models.Model):
+    firstname = models.CharField(max_length=100)
     lastname = models.CharField(max_length=100)
     email = models.EmailField(max_length= 100 )
     password = models.CharField(max_length=50)
     confirm_password = models.CharField(max_length=50)
+    username = models.CharField(max_length=100)
     
     def __str__(self) -> str:
-        return self.fistname
+        return self.firstname'''

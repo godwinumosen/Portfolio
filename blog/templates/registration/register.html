@@ -1,0 +1,36 @@
+
+    {% load static %}
+    {% block content%}
+    <link rel="stylesheet"  href="{% static 'css/signup.css'%}">
+
+<body class="body-form">
+  <div class="center-container">
+    <div class="form-container">
+      <!-- Your form content here -->
+      <h2 class="form-h2">Sign Up</h2>
+      <form class="form-from" method="post", action="">
+        {% csrf_token %}
+        <div >
+        <div class="form-grouping">
+          <label for="username">Username:</label>
+           <input type="text" id="username" name="username"class="form-grouping" required>
+        </div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" class="form-grouping"required>
+        </div>
+        <div >
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password"class="form-grouping" required>
+        </div>
+        <div>
+          <label for="confirm_password">Confirm_password:</label>
+          <input type="password" id="confirm_password" name="confirm_password"class="form-grouping" required>
+        </div>
+        <input type="submit" value="Sign Up" id="form-input">
+        
+        <!-- Form fields for login -->
+        <p class="login-link">Already have an account? <a href="{% url 'new_user_login'%}">Login</a></p>  
+      </form>
+    </div>
+  </div>
+{% endblock %}
