@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-
 class BlogMode  (models.Model):
     title = models.CharField(max_length=250)
     content = models.TextField()

@@ -52,11 +52,12 @@
                         </button>
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav m-auto">
-                                <a href="{% url 'index'%}" class="nav-item nav-link active">Home</a>
+                                <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
                                 <a href="about.html" class="nav-item nav-link active">About</a>
                                 <a href="contact.html" class="nav-item nav-link active">Contact</a>
-                                <a href="{% url 'register'%}" class="nav-item nav-link active">Sign Up</a>
-                                <a href="{% url 'new_user_login'%}" class="nav-item nav-link active">Login</a>
+                                <a href="{% url 'register' %}" class="nav-item nav-link active">Sign Up</a>
+                                <a href="{% url 'new_user_login' %}" class="nav-item nav-link active">Login</a>
+                                <a href="{% url 'add_post' %}" class="nav-item nav-link active">Add Post</a>
                             </div>
                         </div>
                     </nav>
@@ -70,7 +71,7 @@
 
 
   <!-- Subscribe Start -->
-  <div class="container py-5 px-4 bg-secondary text-center">
+  <div class="container py-4 px-3 bg-secondary text-center">
     <h1 class="text-white font-weight-bold">Subscribe My Newsletter</h1>
     <p class="text-white">Subscribe and get my latest article in your inbox</p>
     <form class="form-inline justify-content-center">

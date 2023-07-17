@@ -3,9 +3,6 @@
 
        {% block content%}
 
-       
-
-                
                 <!-- Blog List Start -->
                 <div class="container bg-white pt-5">
                     {% for blog in blogs%}
@@ -15,8 +12,8 @@
                         </div>
                         <div class="col-md-7">
                             <h4 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">{{ blog.title }}</h4>
-                            <p>{{ blog.content }}</p>
-                            <a class="btn btn-link p-0" href="">Read More <i class="fa fa-angle-right"></i></a>
+                            <p>{{ blog.content|truncatechars:150 }}</p>
+                            <a class="btn btn-link p-0" href="{% url 'detail' blog.pk %}">Read More <i class="fa fa-angle-right"></i></a>
                         </div>
                          {% endfor %}
                     </div>

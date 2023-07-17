@@ -1,9 +1,10 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from .forms import RegistrationForm
-from .forms import LoginForm
+from .forms import LoginForm,AddPostForm
+from .forms import AddPostForm
 from django.contrib.auth.models import User
 from .models import BlogMode
 
@@ -15,7 +16,12 @@ def index(request):
     }
     return render(request,'index.html',context)
 
+#detail page
+def detail_view(request, pk):
+    object = get_object_or_404(BlogMode, pk=pk)
+    return render(request, 'detail.html', {'detail': object})
 
+#register user
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
@@ -30,6 +36,7 @@ def register(request):
         form = RegistrationForm()
     return render(request, 'registration/register.html', {'form': form})
 
+#login user
 def login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -53,3 +60,26 @@ def whatsapp_message(request):
     whatsapp_link = f'https://api.whatsapp.com/send?phone={whatsapp_number}'
     context = {'whatsapp_link': whatsapp_link}
     return render(request, 'whatsapp_message.html', context)
+
+
+#create blog or add post
+def add_post(request):
+    if request.method == 'POST':
+        form =AddPostForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/index') 
+    else:
+        form = AddPostForm()
+
+    return render(request, 'add_post.html', {'form': form})
+
+
+
+
+
+
+
+
+
+

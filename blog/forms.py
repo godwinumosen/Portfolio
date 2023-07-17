@@ -1,4 +1,5 @@
 from django import forms
+from .models import BlogMode
 
 
 class RegistrationForm(forms.Form):
@@ -19,3 +20,9 @@ class RegistrationForm(forms.Form):
 class LoginForm(forms.Form):
     username = forms.CharField(label='Username', max_length=100)
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
+
+
+class AddPostForm(forms.ModelForm):
+    class Meta:
+        model = BlogMode
+        fields = ['title', 'content']
