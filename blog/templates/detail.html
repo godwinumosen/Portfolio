@@ -6,12 +6,13 @@
                 <div class="container bg-white pt-5">
                     <div class="row blog-item px-3 pb-5">
                         <div class="col-md-5">
-                            <img class="img-fluid mb-4 mb-md-0" src="{{ detail.img.url }}" alt="Image">
+                            <img class="img-fluid mb-4 mb-md-0" src="{{ detail.image_url|default_if_none:'#' }}" alt="Image">
                         </div>
                         <div class="col-md-7">
                             <h4 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">{{ detail.title }}</h4>
                             <p>{{ detail.content|truncatechars:5000 }}</p>
-                             <a class="btn btn-link p-0" href="{% url 'index' %}"><i class="fa fa-angle-left">Back </i></a> 
+                             <a class="btn btn-link p-0" href="{% url 'index' %}"><i class="fa fa-angle-left">Back </i></a>
+                            
                         </div>
                     </div>
                   

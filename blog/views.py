@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
+from django.views.generic import CreateView
 from django.contrib import messages
 from .forms import RegistrationForm
 from .forms import LoginForm,AddPostForm
@@ -9,6 +10,10 @@ from django.contrib.auth.models import User
 from .models import BlogMode
 
 # Create your views here.
+
+def base (request):
+    return render(request,'base.html',{})
+
 def index(request):
     blogs = BlogMode.objects.all()
     context ={
@@ -20,6 +25,30 @@ def index(request):
 def detail_view(request, pk):
     object = get_object_or_404(BlogMode, pk=pk)
     return render(request, 'detail.html', {'detail': object})
+
+#about
+def about_author (request):
+    about_author = BlogMode.objects.all()
+    contex={
+        'about_author':about_author
+    }
+    return render(request,'about_author.html',contex)
+
+#contact
+def author_info (request):
+    email='umosengodwin568@gmail.com'
+    if request.method == 'POST':
+        message_name = request.POST['message-name']
+        message_email = request.POST['message-email']
+        message = request.POST['message']
+        
+        messages.success(request, f'Your email was sent Successfully we will get back to you {message_name}..!')
+        return redirect('/index')
+    else:
+        context={
+            'email':email
+        }
+        return render(request,'author_info.html',context)
 
 #register user
 def register(request):
@@ -71,15 +100,17 @@ def add_post(request):
             return redirect('/index') 
     else:
         form = AddPostForm()
-
     return render(request, 'add_post.html', {'form': form})
 
-
-
-
-
-
-
-
-
+#edit blog or add post
+def update_post(request, pk):
+    object = get_object_or_404(BlogMode, pk=pk)
+    if request.method == 'POST':
+        form = AddPostForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('detail', pk=pk)
+    else:
+        form = AddPostForm()
+    return render(request, 'update_post.html', {'form': form},{'detail': object})
 

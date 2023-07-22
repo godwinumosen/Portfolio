@@ -53,11 +53,12 @@
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav m-auto">
                                 <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
-                                <a href="about.html" class="nav-item nav-link active">About</a>
-                                <a href="contact.html" class="nav-item nav-link active">Contact</a>
+                                <a href="{% url 'about_author' %}" class="nav-item nav-link active">About</a>
+                                <a href="{% url 'author_info' %}" class="nav-item nav-link active">Contact</a>
                                 <a href="{% url 'register' %}" class="nav-item nav-link active">Sign Up</a>
                                 <a href="{% url 'new_user_login' %}" class="nav-item nav-link active">Login</a>
                                 <a href="{% url 'add_post' %}" class="nav-item nav-link active">Add Post</a>
+                                
                             </div>
                         </div>
                     </nav>

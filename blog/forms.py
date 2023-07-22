@@ -1,5 +1,6 @@
 from django import forms
 from .models import BlogMode
+from django.urls import reverse
 
 
 class RegistrationForm(forms.Form):
@@ -25,4 +26,6 @@ class LoginForm(forms.Form):
 class AddPostForm(forms.ModelForm):
     class Meta:
         model = BlogMode
-        fields = ['title', 'content']
+        fields = ['title', 'content','user',]
+        def get_absolute_url(self):
+            return reverse ('detail', args=(str(self.id)))
