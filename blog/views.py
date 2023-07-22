@@ -109,7 +109,7 @@ def update_post(request, pk):
         form = AddPostForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('detail', pk=pk)
+            return redirect('/detail', pk=pk)
     else:
         form = AddPostForm()
     return render(request, 'update_post.html', {'form': form},{'detail': object})
