@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView
 from django.contrib import messages
 from .forms import RegistrationForm
@@ -92,6 +93,7 @@ def whatsapp_message(request):
 
 
 #create blog or add post
+@login_required
 def add_post(request):
     if request.method == 'POST':
         form =AddPostForm(request.POST)
@@ -103,13 +105,14 @@ def add_post(request):
     return render(request, 'add_post.html', {'form': form})
 
 #edit blog or add post
+@login_required
 def update_post(request, pk):
     object = get_object_or_404(BlogMode, pk=pk)
     if request.method == 'POST':
         form = AddPostForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/detail', pk=pk)
+            return redirect('/add_post', pk=pk)
     else:
         form = AddPostForm()
     return render(request, 'update_post.html', {'form': form},{'detail': object})
