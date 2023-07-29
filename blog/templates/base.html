@@ -22,8 +22,8 @@
                     <img class="mx-auto d-block w-75 bg-primary img-fluid rounded-circle mb-3 p-3" src="{% static 'img/senwin.jpg' %}" alt="Image">
                     <h3 class="font-weight-bold">Godwin Umosen</h3>
                     <p class="mb-4">
-                        I am a software developer highly motivated and competent to take up any challenging roles related to software 
-                        programming languages like Python, JavaScript and other related software technologies.
+                        I am a Software Developer & Data Analyst highly motivated and competent to take up any challenging roles related to software 
+                        programming languages like Python, JavaScript and other related software technologies .
                     </p>
                     <div class="d-flex justify-content-center mb-5">
                         <a class="btn btn-outline-primary mr-2" href="https://twitter.com/senwin_code?t=TPccCkT13K0OOXuRcxvAlg&s=09"><i class="fab fa-twitter"></i></a>
@@ -55,10 +55,15 @@
                                 <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
                                 <a href="{% url 'about_author' %}" class="nav-item nav-link active">About</a>
                                 <a href="{% url 'author_info' %}" class="nav-item nav-link active">Contact</a>
-                                <a href="{% url 'register' %}" class="nav-item nav-link active">Sign Up</a>
-                                <a href="{% url 'new_user_login' %}" class="nav-item nav-link active">Login</a>
                                 <a href="{% url 'add_post' %}" class="nav-item nav-link active">Add Post</a>
-                                
+                                <div class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Pages</a>
+                                    <div class="dropdown-menu">
+                                        <a href="{% url 'register' %}" class="dropdown-item active">Sign Up</a>
+                                        <a href="{% url 'new_user_login' %}" class="dropdown-item active">Login</a>
+                                        <a href="{% url 'user_logout' %}" class="dropdown-item active">Logout</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </nav>
@@ -83,7 +88,9 @@
             </div>
           </div>
     </form>
-</div>
+</div><br>
+
+<a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
 <!-- main Javascript -->
 <script src="{% static 'js/main.js'%}"></script>
 

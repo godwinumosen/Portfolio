@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView
@@ -17,8 +17,10 @@ def base (request):
 
 def index(request):
     blogs = BlogMode.objects.all()
+    ordering = ['-pub_date']
     context ={
-        'blogs':blogs
+        'blogs':blogs,
+        'ordering':ordering
     }
     return render(request,'index.html',context)
 
@@ -60,11 +62,14 @@ def register(request):
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
             # Create the user
-            new_user = User.objects.create_user(username=username, email=email, password=password)            
-            return redirect('/new_user_login') 
+            new_user = User.objects.create_user(username=username, email=email, password=password,)           
+            return redirect('/new_user_login')
     else:
         form = RegistrationForm()
-    return render(request, 'registration/register.html', {'form': form})
+    context = {
+        'form':form,
+    }
+    return render(request, 'registration/register.html', context) 
 
 #login user
 def login(request):
@@ -83,6 +88,13 @@ def login(request):
         form = LoginForm()
     return render(request, 'registration/new_user_login.html', {'form': form})
 
+#Logout from blog
+@login_required
+def user_logout(request):
+    print('logged out')
+    logout(request)
+
+    return redirect('index')
 
 #whatsapp messages
 def whatsapp_message(request):
@@ -99,21 +111,33 @@ def add_post(request):
         form =AddPostForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/index') 
+            return redirect('/index')
     else:
         form = AddPostForm()
     return render(request, 'add_post.html', {'form': form})
 
 #edit blog or add post
 @login_required
-def update_post(request, pk):
-    object = get_object_or_404(BlogMode, pk=pk)
+def update_post(request, blog_id):
+    blog = get_object_or_404(BlogMode, id=blog_id)
+     
     if request.method == 'POST':
-        form = AddPostForm(request.POST)
+        form = AddPostForm(request.POST, instance=blog)
         if form.is_valid():
             form.save()
-            return redirect('/add_post', pk=pk)
+            return redirect('/index', blog_id=blog.id)  
     else:
-        form = AddPostForm()
-    return render(request, 'update_post.html', {'form': form},{'detail': object})
+        form = AddPostForm(instance=blog)
+    return render(request, 'update_post.html', {'form': form})
 
+#delete blog post
+@login_required
+def delete_post(request, blog_id):
+    post = get_object_or_404(BlogMode, id=blog_id)
+    post.delete()
+    return render(request, 'delete_blog.html',{})
+   
+    
+        
+
+ 
