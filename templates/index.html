@@ -16,7 +16,7 @@
                             <h4 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">{{ blog.title }}</h4>
                             <p>{{ blog.content|truncatechars:150 }}</p>
                             <a class="btn btn-link p-0" href="{% url 'detail' blog.pk %}">Read More <i class="fa fa-angle-right"></i></a>
-                            <a class="btn btn-link p-0" href="{% url 'update_blog' blog.pk %}"></small>Edit</small> <i class="fa fa-angle-right"></i></a>
+                           
                       
                         </div>
                          {% endfor %}

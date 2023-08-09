@@ -1,7 +1,7 @@
 
 <html lang="en">
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8">  
         {% load static %}
         {% block title%}<title>Bloggy </title>{%endblock%}
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -57,7 +57,7 @@
                                 <a href="{% url 'author_info' %}" class="nav-item nav-link active">Contact</a>
                                 <a href="{% url 'add_post' %}" class="nav-item nav-link active">Add Post</a>
                                 <div class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Pages</a>
+                                    <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Register</a>
                                     <div class="dropdown-menu">
                                         <a href="{% url 'register' %}" class="dropdown-item active">Sign Up</a>
                                         <a href="{% url 'new_user_login' %}" class="dropdown-item active">Login</a>
