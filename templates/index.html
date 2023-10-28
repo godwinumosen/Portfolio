@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+a{% extends 'base.html' %}
 {% load static %}
 
        {% block content%}
@@ -8,19 +8,22 @@
                     {% for blog in blogs%}
                     <div class="row blog-item px-3 pb-5">
                         <div class="col-md-5">
+                            <a class="btn btn-link p-0" href="{% url 'detail' blog.pk %}">
                             {% if blog.img %}
                             <img class="img-fluid mb-4 mb-md-0" src= "{{ blog.image_url|default_if_none:'#' }}"alt="Image"><br>
                             {% endif %}    
+                            </a>
                         </div>
                         <div class="col-md-7">
+                            <a class="btn btn-link p-0" href="{% url 'detail' blog.pk %}">
                             <h4 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">{{ blog.title }}</h4>
+                            </a>
                             <p>{{ blog.content|truncatechars:150 }}</p>
                             <a class="btn btn-link p-0" href="{% url 'detail' blog.pk %}">Read More <i class="fa fa-angle-right"></i></a>
                            
-                      
                         </div>
                          {% endfor %}
                     </div>
                 
-                {% endblock %
+                {% endblock %}
         
