@@ -21,7 +21,7 @@ a{% extends 'base.html' %}
                             <p>{{ blog.content|truncatechars:150 }}</p>
                             <a class="btn btn-link p-0" href="{% url 'detail' blog.pk %}">Read More <i class="fa fa-angle-right"></i></a>
                            
-                        </div>
+                        </div
                          {% endfor %}
                     </div>
                 
