@@ -11,7 +11,7 @@ a{% extends 'base.html' %}
                             <a class="btn btn-link p-0" href="{% url 'detail' blog.pk %}">
                             {% if blog.img %}
                             <img class="img-fluid mb-4 mb-md-0" src= "{{ blog.image_url|default_if_none:'#' }}"alt="Image"><br>
-                            {% endif %  
+                            {% endif %}    
                             </a>
                         </div>
                         <div class="col-md-7">
