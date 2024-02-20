@@ -38,3 +38,23 @@ class BlogMode  (models.Model):
     
     def __str__(self) -> str:
         return self.firstname'''
+class SecondBlogMode  (models.Model):
+    title = models.CharField(max_length=250)
+    content = models.TextField()
+    img = models.ImageField(upload_to='images2/')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    pub_date = models.DateTimeField(auto_now_add=True)
+    
+    class Meta :
+        ordering = ['-pub_date',]
+    
+    def __str__(self) :
+        return self.title
+    
+    def get_absolute_url(self):
+        return reverse ('detail', args=(str(self.id)))
+    
+    @property
+    def image_url(self):
+        if self.img and hasattr(self.img, 'url'):
+            return self.img.url

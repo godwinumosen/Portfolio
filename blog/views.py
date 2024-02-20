@@ -8,7 +8,7 @@ from .forms import RegistrationForm
 from .forms import LoginForm,AddPostForm
 from .forms import AddPostForm
 from django.contrib.auth.models import User
-from .models import BlogMode
+from .models import BlogMode, SecondBlogMode
 
 # Create your views here.
 
@@ -17,19 +17,27 @@ def base (request):
 
 def index(request):
     blogs = BlogMode.objects.all()
+    posts = SecondBlogMode.objects.all()
     ordering = ['-pub_date']
     context ={
         'blogs':blogs,
+        'posts':posts,
         'ordering':ordering
     }
     return render(request,'index.html',context)
 
-#detail page
+
+#The detail page
 def detail_view(request, pk):
     object = get_object_or_404(BlogMode, pk=pk)
     return render(request, 'detail.html', {'detail': object})
 
-#about
+#The second detail page
+def second_detail_view(request, pk):
+    object = get_object_or_404(SecondBlogMode, pk=pk)
+    return render(request, 'detail_secondblog.html', {'detail_second': object})
+
+#about page
 def about_author (request):
     about_author = BlogMode.objects.all()
     contex={

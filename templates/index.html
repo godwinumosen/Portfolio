@@ -16,14 +16,50 @@
                         </div>
                         <div class="col-md-7">
                             <a class="btn btn-link p-0" href="{% url 'detail' blog.pk %}">
-                            <h4 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">{{ blog.title }}</h4>
+                            <h4 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">{{ blog.title |truncatechars:20 }}</h4>
                             </a>
-                            <p>{{ blog.content|truncatechars:150 }}</p>
+                            <p>{{ blog.content|truncatechars:90 }}</p>
                             <a class="btn btn-link p-0" href="{% url 'detail' blog.pk %}">Read More <i class="fa fa-angle-right"></i></a>
                            
                         </div>
                          {% endfor %}
                     </div>
-                
-                {% endblock %}
+
+          <!-- Subscribe Start -->
+  <div class="container py-4 px-3 bg-secondary text-center">
+    <h1 class="text-white font-weight-bold">Subscribe My Newsletter</h1>
+    <p class="text-white">Subscribe and get my latest article in your inbox</p>
+    <form class="form-inline justify-content-center">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Your Email">
+            <div class="input-group-append">
+              <button href="" class="btn btn-primary" type="submit">Subscribe</button>
+            </div>
+          </div>
+    </form>
+</div>
+                 
+<!-- Second Blog List Start -->
+
+<div class="container bg-white pt-5">
+    {% for post in posts %}
+    <div class="row blog-item px-3 pb-5">
+        <div class="col-md-5">
+            <a class="btn btn-link p-0" href="{% url 'detail_second' post.pk %}">
+            {% if post.img %}
+            <img class="img-fluid mb-4 mb-md-0" src= "{{ post.image_url|default_if_none:'#' }}"alt="Image"><br>
+            {% endif %}    
+            </a>
+        </div>
+        <div class="col-md-7">
+            <a class="btn btn-link p-0" href="{% url 'detail_second' post.pk %}">
+            <h4 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">{{ post.title |truncatechars:15 }}</h4>
+            </a>
+            <p>{{ post.content|truncatechars:80 }}</p>
+            <a class="btn btn-link p-0" href="{% url 'detail_second' post.pk %}">Read More <i class="fa fa-angle-right"></i></a>
+           
+        </div>
+         {% endfor %}
+    </div>
+{% endblock %}
         

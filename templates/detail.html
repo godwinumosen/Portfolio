@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-       {% block content%}
+{% block content%}
 
                 <!-- detail List Start -->
                 <div class="container bg-white pt-5">
@@ -11,8 +11,8 @@
                         <div class="col-md-7">
                             <h4 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">{{ detail.title }}</h4>
                             <p>{{ detail.content|truncatechars:5000 }}</p>
-                             <a class="btn btn-link p-0" href="{% url 'index' %}"><i class="fa fa-angle-left">Back </i></a>  - {{detail.pub_date}}
-                             
+                             <a class="btn btn-link p-0" href="{% url 'index' %}"><i class="fa fa-angle-left">Back </i></a> 
+                             <small>Posted by</small>:{{detail.user}}  - {{detail.pub_date}}
                         </div>
                     </div>
                   

@@ -55,7 +55,7 @@
                                 <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
                                 <a href="{% url 'about_author' %}" class="nav-item nav-link active">About</a>
                                 <a href="{% url 'author_info' %}" class="nav-item nav-link active">Contact</a>
-                                <a href="{% url 'add_post' %}" class="nav-item nav-link active">Add Post</a>
+                                <a href="{% url 'index' %}" class="nav-item nav-link active">Add Post</a>
                                 <div class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Register</a>
                                     <div class="dropdown-menu">
@@ -75,22 +75,6 @@
 
 {% endblock %}
 
-
-  <!-- Subscribe Start -->
-  <div class="container py-4 px-3 bg-secondary text-center">
-    <h1 class="text-white font-weight-bold">Subscribe My Newsletter</h1>
-    <p class="text-white">Subscribe and get my latest article in your inbox</p>
-    <form class="form-inline justify-content-center">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Your Email">
-            <div class="input-group-append">
-              <button href="" class="btn btn-primary" type="submit">Subscribe</button>
-            </div>
-          </div>
-    </form>
-</div>
-
-<a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
 <!-- main Javascript -->
 
 <script src="{% static 'js/main.js'%}"></script>
