@@ -39,7 +39,7 @@ def second_detail_view(request, pk):
 
 #about page
 def about_author (request):
-    about_author = BlogMode.objects.all()
+    about_author = BlogMode.objects.all(
     contex={
         'about_author':about_author
     }
