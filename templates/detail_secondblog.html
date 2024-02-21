@@ -12,6 +12,7 @@
                             <h4 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">{{ detail_second.title }}</h4>
                             <p>{{ detail_second.content|truncatechars:5000 }}</p>
                              <a class="btn btn-link p-0" href="{% url 'index' %}"><i class="fa fa-angle-left">Back </i>
+                                <a class="btn btn-link p-0" href="{% url 'author_info' %}">Contact </i></a> 
                             </a> <small>Posted by</small>:{{detail_second.user}}  - {{detail_second.pub_date}} 
                              
                         </div>
